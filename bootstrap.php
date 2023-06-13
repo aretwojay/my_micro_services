@@ -3,7 +3,7 @@
 // bootstrap.php
 
 use App\Domain\User\UserRepository;
-use App\Services\UserService;
+use App\Services\AuthService;
 use App\Factory\MyResponseFactory;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\EntityManager;
@@ -42,8 +42,8 @@ $container->set(UserRepository::class, static function (Container $c) {
 });
 
 
-$container->set(UserService::class, static function (Container $c) {
-    return new UserService($c->get(EntityManager::class));
+$container->set(AuthService::class, static function (Container $c) {
+    return new AuthService($c->get(EntityManager::class),);
 });
 
 return $container;

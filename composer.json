@@ -29,8 +29,10 @@
         "firebase/php-jwt": "^6.5",
         "monolog/monolog": "^2.8",
         "php-di/php-di": "^6.4",
+        "slim/php-view": "^3.2",
         "slim/psr7": "^1.5",
         "slim/slim": "^4.10",
+        "slim/twig-view": "^3.3",
         "symfony/cache": "^6.2",
         "uma/dic": "^2.0"
     },

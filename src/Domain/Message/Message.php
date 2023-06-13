@@ -26,17 +26,19 @@ class Message
     #[JoinColumn(name: 'sender_id', referencedColumnName: 'id', nullable: false), ManyToOne(targetEntity: User::class)]
     public User $sender;
 
-    #[JoinColumn(name: 'receiver_id', referencedColumnName: 'id', nullable: false), ManyToOne(targetEntity: User::class)]
+    #[JoinColumn(name: 'receiver_id', referencedColumnName: 'id', nullable: true), ManyToOne(targetEntity: User::class)]
     public User $receiver;
 
     #[Column(name: 'send_at', type: 'datetimetz_immutable', nullable: false)]
     public DateTimeImmutable $sendAt;
 
-    public function __construct(string $content, User $sender, User $receiver)
+    public function __construct(string $content, User $sender, User $receiver = null)
     {
         $this->content = $content;
         $this->sender = $sender;
-        $this->receiver = $receiver;
+        if (isset($receiver)){
+            $this->receiver = $receiver;
+        }
         $this->sendAt = new DateTimeImmutable('now');
     }
     

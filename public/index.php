@@ -9,6 +9,8 @@ use App\Application\Settings\SettingsInterface;
 use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -46,6 +48,12 @@ $middleware($app);
 // Register routes
 $routes = require __DIR__ . '/../app/routes.php';
 $routes($app);
+
+// Create Twig
+$twig = Twig::create('./templates', ['cache' => false]);
+
+// Add Twig-View Middleware
+$app->add(TwigMiddleware::create($app, $twig));
 
 /** @var SettingsInterface $settings */
 $settings = $container->get(SettingsInterface::class);
