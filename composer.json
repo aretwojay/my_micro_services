@@ -28,7 +28,7 @@
         "doctrine/orm": "^2.4",
         "firebase/php-jwt": "^6.5",
         "monolog/monolog": "^2.8",
-        "php-di/php-di": "^6.4",
+        "php-di/php-di": "^7.0",
         "slim/php-view": "^3.2",
         "slim/psr7": "^1.5",
         "slim/slim": "^4.10",
